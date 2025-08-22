@@ -47,7 +47,7 @@ public static int Ssmall(int arr[],int n){
 	    }
 	    return ssmall;
 	    
-	}
+	}                                                         Time,Space Complexity = O(n),O(1)
 	public static int Slar(int arr[],int n){
 	    int lar=Integer.MIN_VALUE;
 	    int slar=Integer.MIN_VALUE;
