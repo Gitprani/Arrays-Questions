@@ -1,0 +1,66 @@
+--------------BruteForce (no duplicates)------------------------------
+public static void main(String[] args) {
+	    int arr[]={1,2,4,7,5};
+	    int n=arr.length;                           Time,Space Complexity=O(nlog(n)),O(1)
+	    
+	    Arrays.sort(arr);
+	    System.out.print(arr[n-2]+" "+arr[1]);
+	    
+	}
+-----------------Better---------------------------
+public static void getElements(int arr[],int n){
+	    int small=Integer.MAX_VALUE;
+	    int big=Integer.MIN_VALUE;
+	    
+	    for(int i=0;i<n;i++){                              //O(n)
+	        small=Math.min(small,arr[i]);
+	        big=Math.max(big,arr[i]);
+	    }
+	    int secS=Integer.MAX_VALUE;
+	    int secB=Integer.MIN_VALUE;                                                         Time,Space = O(n) + O(n) = O(n),O(1)
+	                                                                                                    (min()+sec())
+	    for(int i=0;i<n;i++){                              //O(n)
+	        if(arr[i]<secS && arr[i]!=small){       // secS < arr[i] < small
+	            secS=arr[i];     // only "2" will satisfy
+	        }
+	        if(arr[i]>secB && arr[i]!=big){        // secB < arr[i] < big
+	            secB=arr[i];          // only "5" will satisfy                
+	        }
+	    }
+	    System.out.println(secS);
+	    System.out.print(secB);
+	    
+	}
+---------------Optimised(single pass for each)-------------------
+public static int Ssmall(int arr[],int n){
+	    int small=Integer.MAX_VALUE;
+	    int ssmall=Integer.MAX_VALUE;
+	    
+	    for(int i=0;i<n;i++){                     // single pass and updating small, ssmall
+	        if(arr[i]<small){
+	            ssmall=small;
+	            small=arr[i];
+	        }
+	        else if(arr[i] < ssmall && arr[i] != small){   //small < arr[i] < ssmall
+	            ssmall=arr[i];
+	        }
+	    }
+	    return ssmall;
+	    
+	}
+	public static int Slar(int arr[],int n){
+	    int lar=Integer.MIN_VALUE;
+	    int slar=Integer.MIN_VALUE;
+	    
+	    for(int i=0;i<n;i++){                     // single pass and updating lar,slar
+	        if(arr[i]>lar){
+	            slar=lar;
+	            lar=arr[i];
+	        }
+	        else if(arr[i]>slar && arr[i]!=lar){         //slar < arr[i] < lar
+	            slar=arr[i];
+	        }
+	    }
+	    return slar;
+	}
+}
