@@ -1,0 +1,18 @@
+---------BruteForce--------------
+public static void Rotate(int arr[],int n,int k){
+	    int temp[]=new int[k];          //extra space
+	    for(int i=0;i<k;i++){                  
+	        temp[i]=arr[i];            //adding k elements
+	    }
+	    for(int i=k;i<n;i++){                                                      // Complexity=O(n+k),O(k)
+	        arr[i-k]=arr[i];       // shifting elements      
+	    } 
+	    int j=0;
+	    for(int i=n-k;i<n;i++){
+	        arr[i]=temp[j];             //putting temp el at last(from n-k)
+	        j++;
+	    }
+	    for(int el:arr){
+	        System.out.print(el+" ");
+	    }
+	}
