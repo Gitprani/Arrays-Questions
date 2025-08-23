@@ -1,0 +1,20 @@
+---------------Brute Force---------------
+public static void Rotate(int arr[],int n){
+	    int temp[]=new int[n];         // extra space
+	    for(int i=1;i<n;i++){
+	        temp[i-1]=arr[i];                            Complexity=O(n),O(n)
+	    }
+	    temp[n-1]=arr[0];
+	    
+	    for(int el:temp){
+	        System.out.print(el+" ");
+	    }
+	}
+-----------Optimised--------------
+public static void Rotate(int arr[],int n){
+	    int temp=arr[0];
+	    for(int i=1;i<n;i++){           Complexity=O(n),O(1)
+	        arr[i-1]=arr[i];
+	    }
+	    arr[n-1]=temp;
+	}
